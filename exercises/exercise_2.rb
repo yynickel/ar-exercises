@@ -7,5 +7,5 @@ puts "----------"
 # Your code goes here ...
 @store1 = Store.first
 @store2 = Store.second
-@store1.name = "Surrey"
+@store1.name = "Sky Fortress"
 @store1.save
