@@ -1,4 +1,6 @@
 class Store < ActiveRecord::Base
+  before_destroy :check_destroyable
+
   has_many :employees
 
   validates :name, length: {minimum:3}
@@ -10,4 +12,12 @@ class Store < ActiveRecord::Base
       errors.add("Mens_apparel and womens_apparel", "must have one of the apparels" )
     end
   end
+
+  private
+    def check_destroyable
+      puts "this store has #{self.employees.count} employees"
+      if self.employees.count!=0
+        throw :abort
+      end
+    end
 end
